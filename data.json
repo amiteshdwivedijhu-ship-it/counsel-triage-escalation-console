@@ -1,0 +1,231 @@
+{
+  "cases": [
+    {
+      "id": "case-marcus",
+      "name": "New medication, mild nausea",
+      "meta": "Marcus, 34 · Day 14 of a new Rx",
+      "tag": "Moderate · side-effect pattern",
+      "tagTone": "mint",
+      "member": {
+        "initials": "MA",
+        "name": "Marcus Alexander",
+        "facts": "34 · Brooklyn, NY · Counsel Signature",
+        "chip": "Day 14 of new Rx"
+      },
+      "turnMeta": "Chat #M-1042 · turn captured today at 12:41 PM",
+      "chat": [
+        {
+          "who": "member",
+          "text": "I started a new medication about 2 weeks ago. Today I felt nauseous about an hour after my morning dose, and I got a little dizzy. Does this usually pass, or should I be worried?"
+        },
+        {
+          "who": "ai",
+          "label": "Counsel AI",
+          "text": "Good question. Nausea and mild dizziness can be early side effects when starting a new medication. Because this started right after this morning's dose, I want a clinician to check before I reassure you. 2 of 2 triage signals match the medication side-effect pattern, so the recommended policy is to add a doctor to this chat. A doctor usually joins in under 10 minutes and sees the full picture: this chat, your meds, and your labs.",
+          "triageChip": "Triage: moderate side-effect pattern"
+        }
+      ],
+      "policy": {
+        "name": "Add a doctor to chat",
+        "rule": "Rule M-14 in the medication side-effect protocol: symptom onset after a dose, within the first 30 days of a new Rx, triggers clinician review before Counsel AI continues with reassurance.",
+        "confidence": { "value": "0.78", "policyVersion": "v3.1", "signals": "2 of 2"},
+        "citations": [
+          {
+            "label": "Symptom: nausea plus mild dizziness, onset about 1h after this morning's dose",
+            "src": "Chat turn · today 12:41 PM"
+          },
+          {
+            "label": "History: Day 14 of new Rx, no prior side-effect episodes on file",
+            "src": "Member record · updated this week"
+          },
+          {
+            "label": "Protocol: medication side-effect triage, rule M-14",
+            "src": "Policy library · v3.1"
+          }
+        ]
+      },
+      "recommended": "add-doctor",
+      "impact": {
+        "stay-with-ai": [
+          ["Chat continues with Counsel AI", "ok"],
+          ["Self-care guidance cited in chat, no clinician visit", "neutral"],
+          ["Next review check-in scheduled: 24h", "neutral"]
+        ],
+        "add-doctor": [
+          ["Doctor joining chat", "ok"],
+          ["Visit started · $29 per visit", "ok"],
+          ["Time to doctor: est. 6 min", "neutral"],
+          ["Doctor sees full picture: chat, meds, labs", "ok"],
+          ["Chat paused until the doctor responds", "neutral"]
+        ],
+        "urgent-redirect": [
+          ["Doctor activated now · urgent queue", "ok"],
+          ["Visit started · urgent, no wait", "ok"],
+          ["Time to doctor: est. 3 min", "neutral"],
+          ["Chat paused · urgent banner sent to member", "neutral"]
+        ],
+        "emergency-guidance": [
+          ["Emergency guidance shown · labeled synthetic demo", "warn"],
+          ["911 guidance on screen", "warn"],
+          ["Normal chat continuation blocked", "warn"],
+          ["Emergency note added to member record", "neutral"]
+        ]
+      }
+    },
+    {
+      "id": "case-priya",
+      "name": "Cold symptoms, no fever",
+      "meta": "Priya, 28 · low-acuity FAQ",
+      "tag": "Low acuity · stay with AI",
+      "tagTone": "mint",
+      "member": {
+        "initials": "PK",
+        "name": "Priya Kaur",
+        "facts": "28 · Jersey City, NJ · Counsel free",
+        "chip": "No chronic conditions"
+      },
+      "turnMeta": "Chat #P-8731 · turn captured today at 9:03 AM",
+      "chat": [
+        {
+          "who": "member",
+          "text": "Is it normal for a cold to last about a week? I have congestion and a light cough, no fever. Should I come in for a visit or just rest?"
+        },
+        {
+          "who": "ai",
+          "label": "Counsel AI",
+          "text": "A mild cold lasting about a week is common, and congestion with a light cough and no fever usually clears on its own. 2 of 2 triage signals match the low-acuity respiratory pattern: no fever, no difficulty breathing, no chronic conditions on file. The recommended policy is to stay with Counsel AI, and I can walk you through safe self-care steps right here in the chat.",
+          "triageChip": "Triage: low acuity · self-care"
+        }
+      ],
+      "policy": {
+        "name": "Stay with Counsel AI",
+        		"rule": "Rule R-07 in the low-acuity respiratory protocol: no fever, no shortness of breath, no chronic conditions, and a common timeline keep the chat with Counsel AI under clinician oversight of the protocol.",
+        "confidence": { "value": "0.91", "policyVersion": "v3.1", "signals": "2 of 2"},
+        "citations": [
+          {
+            "label": "Symptom: congestion plus light cough, no fever reported",
+            "src": "Chat turn · today 9:03 AM"
+          },
+          {
+            "label": "History: no chronic conditions or prior episodes on file",
+            "src": "Member record · verified at onboarding"
+          },
+          {
+            "label": "Protocol: low-acuity respiratory triage, rule R-07",
+            "src": "Policy library · v3.1"
+          }
+        ]
+      },
+      "recommended": "stay-with-ai",
+      "impact": {
+        "stay-with-ai": [
+          ["Chat continues with Counsel AI", "ok"],
+          ["Self-care guidance cited in chat, no clinician visit", "neutral"],
+          ["Next review check-in scheduled: 24h", "neutral"]
+        ],
+        "add-doctor": [
+          ["Doctor joining chat", "ok"],
+          ["Visit started · $29 per visit", "ok"],
+          ["Time to doctor: est. 7 min", "neutral"],
+          ["Doctor sees full picture: chat, meds, labs", "ok"],
+          ["Chat paused until the doctor responds", "neutral"]
+        ],
+        "urgent-redirect": [
+          ["Doctor activated now · urgent queue", "ok"],
+          ["Visit started · urgent, no wait", "ok"],
+          ["Time to doctor: est. 4 min", "neutral"],
+          ["Chat paused · urgent banner sent to member", "neutral"]
+        ],
+        "emergency-guidance": [
+          ["Emergency guidance shown · labeled synthetic demo", "warn"],
+          ["911 guidance on screen", "warn"],
+          ["Normal chat continuation blocked", "warn"],
+          ["Emergency note added to member record", "neutral"]
+        ]
+      }
+    },
+    {
+      "id": "case-daniel",
+      "name": "Chest pain, onset 20 min ago",
+      "meta": "Daniel, 52 · red-flag symptom",
+      "tag": "Red flag · emergency guidance",
+      "tagTone": "red",
+      "member": {
+        "initials": "DR",
+        "name": "Daniel Reyes",
+        "facts": "52 · Queens, NY · Counsel Signature",
+        "chip": "Day 0 member"
+      },
+      "turnMeta": "Chat #D-2210 · turn captured today at 6:17 PM",
+      "chat": [
+        {
+          "who": "member",
+          "text": "I have a sharp pain in my chest that started about 20 minutes ago. It hurts when I take a deep breath. Should I wait here in the chat or do something else?"
+        },
+        {
+          "who": "ai",
+          "label": "Counsel AI",
+          "text": "I am pausing my usual response. Chest pain with sharp onset and pain on deep breathing can be a red-flag symptom, and I am not qualified to clear it. The recommended policy is emergency guidance: show you what to do right now and stop normal chat. A care team alert is added to your record.",
+          "triageChip": "Triage: red-flag symptom"
+        }
+      ],
+      "policy": {
+        "name": "Emergency guidance",
+        "rule": "Rule E-02 in the red-flag symptom protocol: chest pain with sharp onset and pain on deep breathing blocks normal chat and surfaces emergency guidance immediately. Counsel AI never clears red-flag symptoms.",
+        "confidence": { "value": "0.96", "policyVersion": "v2.4", "signals": "2 of 2"},
+        "citations": [
+          {
+            "label": "Symptom: sharp chest pain, onset 20 min ago, pain on deep breath",
+            "src": "Chat turn · today 6:17 PM"
+          },
+          {
+            "label": "History: no chest pain episodes on file, Day 0 member",
+            "src": "Member record · created today"
+          },
+          {
+            "label": "Protocol: red-flag symptom triage, rule E-02",
+            "src": "Policy library · v2.4"
+          }
+        ]
+      },
+      "recommended": "emergency-guidance",
+      "emergency": {
+        "title": "Emergency guidance is on screen",
+        "intro": "This is a labeled synthetic demo, not medical advice. In a live product this panel would show:",
+        "steps": [
+          "If you think this is an emergency, call 911 or go to the nearest emergency room now.",
+          "Do not wait for the chat. Counsel AI and the on-call team cannot see you faster than 911.",
+          "Share this chat with the ER team so they have your symptoms and history."
+        ],
+        "note": "Normal chat continuation is blocked for this member until the case is resolved."
+      },
+      "impact": {
+        "stay-with-ai": [
+          ["Chat continues with Counsel AI", "ok"],
+          ["Self-care guidance cited in chat, no clinician visit", "neutral"],
+          ["Next review check-in scheduled: 24h", "neutral"]
+        ],
+        "add-doctor": [
+          ["Doctor joining chat", "ok"],
+          ["Visit started · $29 per visit", "ok"],
+          ["Time to doctor: est. 6 min", "neutral"],
+          ["Doctor sees full picture: chat, meds, labs", "ok"],
+          ["Chat paused until the doctor responds", "neutral"]
+        ],
+        "urgent-redirect": [
+          ["Doctor activated now · urgent queue", "ok"],
+          ["Visit started · urgent, no wait", "ok"],
+          ["Time to doctor: est. 2 min", "neutral"],
+          ["Chat paused · urgent banner sent to member", "neutral"]
+        ],
+        "emergency-guidance": [
+          ["Emergency guidance shown · labeled synthetic demo", "warn"],
+          ["911 guidance on screen", "warn"],
+          ["Normal chat continuation blocked", "warn"],
+          ["On-call clinician notified · emergency note on record", "ok"],
+          ["Care team follows up after the case resolves", "neutral"]
+        ]
+      }
+    }
+  ]
+}

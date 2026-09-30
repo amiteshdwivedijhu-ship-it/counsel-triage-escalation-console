@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Synthetic demo of a triage escalation policy console for Counsel: member chat turn, AI triage recommendation with cited symptom and history stubs, human gate (stay with AI, add a doctor, urgent redirect, emergency guidance), care-path impact. Synthetic data only.">
+<title>Counsel · Triage Escalation Policy Console (Synthetic Demo)</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#case-grid">Skip to case loader</a>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span class="brand-name">Counsel</span>
+    <span class="brand-sub">Triage escalation console</span>
+  </div>
+  <span class="demo-badge" title="Synthetic demo only">Synthetic demo</span>
+</header>
+
+<main class="shell">
+  <header class="hero">
+    <p class="eyebrow">Core product · Day 0 to Day 30 chat</p>
+    <h1>Triage escalation policy console</h1>
+    <p class="tagline">Every member chat turn gets a triage recommendation with cited symptom and history stubs. An operator confirms or overrides the gate, then the care path moves: stay with Counsel AI, add a doctor to chat, urgent redirect, or emergency guidance. Synthetic member data only. No real PHI, no accounts, no medical advice.</p>
+  </header>
+
+  <section class="picker card" aria-labelledby="picker-title">
+    <h2 id="picker-title" class="step-title"><span class="step-no">1</span>Load a synthetic member chat</h2>
+    <div id="case-grid" class="case-grid"></div>
+  </section>
+
+  <section id="console" aria-labelledby="case-title">
+    <section class="block card" aria-labelledby="chat-title">
+      <h2 id="chat-title" class="step-title"><span class="step-no">2</span>Member + chat turn</h2>
+      <div id="member-stub" class="member-stub"></div>
+      <div id="chat-thread" class="chat-thread"></div>
+    </section>
+
+    <section class="block card" aria-labelledby="policy-title">
+      <h2 id="policy-title" class="step-title"><span class="step-no">3</span>Escalation policy</h2>
+      <div id="policy-card"></div>
+    </section>
+
+    <section class="block card" aria-labelledby="gate-title">
+      <h2 id="gate-title" class="step-title"><span class="step-no">4</span>Human gate</h2>
+      <p class="gate-copy">Confirm the recommendation or override it. Either way the choice is logged to the triage audit before the care path moves.</p>
+      <div id="gate-options" class="gate-options"></div>
+      <div id="gate-status" class="gate-status hidden"></div>
+    </section>
+
+    <section id="impact-block" class="block card hidden" aria-labelledby="impact-title">
+      <h2 id="impact-title" class="step-title"><span class="step-no">5</span>Care-path impact</h2>
+      <div id="impact-strip"></div>
+    </section>
+
+    <section id="emergency-block" class="block hidden">
+      <div id="emergency-panel"></div>
+    </section>
+  </section>
+</main>
+
+<footer class="shell">
+  <p>Synthetic prototype. No real patient data, no accounts, no real doctor contact, no medical advice. Styled from Counsel's public marketing site; the operator console surface is inferred for this demo.</p>
+  <button id="reset" class="button button-quiet" type="button">Reset demo</button>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+<div id="live-region" class="visually-hidden" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>
